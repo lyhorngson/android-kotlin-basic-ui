@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ========== Dark Theme (Night) ========== -->
+    <style name="Theme.MyApp"
+        parent="Theme.Material3.Dark.NoActionBar">
+
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/sky_blue_primary_light</item>
+        <item name="colorOnPrimary">@color/sky_on_primary_dark</item>
+        <item name="colorPrimaryContainer">@color/sky_blue_primary_dark</item>
+        <item name="colorOnPrimaryContainer">@color/sky_blue_accent</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/sky_blue_accent</item>
+        <item name="colorOnSecondary">@color/sky_on_secondary_dark</item>
+        <item name="colorSecondaryContainer">@color/sky_blue_primary_dark</item>
+        <item name="colorOnSecondaryContainer">@color/sky_blue_accent</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">@color/sky_background_dark</item>
+        <item name="colorSurface">@color/sky_surface_dark</item>
+        <item name="colorSurfaceVariant">@color/sky_surface_variant_dark</item>
+        <item name="colorOnSurface">@color/sky_text_primary_dark</item>
+        <item name="colorOnSurfaceVariant">@color/sky_text_secondary_dark</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">@color/sky_outline_dark</item>
+
+        <!-- Error -->
+        <item name="colorError">@color/sky_error_dark</item>
+        <item name="colorOnError">@color/sky_on_error_dark</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/sky_background_dark</item>
+        <item name="android:navigationBarColor">@color/sky_surface_dark</item>
+
+    </style>
+
+</resources>

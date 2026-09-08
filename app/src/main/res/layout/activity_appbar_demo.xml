@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- ===================================================== -->
+        <!-- Style 1: Small Top App Bar (Default / Standard)       -->
+        <!-- Most common toolbar — fixed at the top with title     -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 · Small Top App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarSmall"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorSurface"
+            android:elevation="4dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="My App"
+            app:subtitle="Dashboard"
+            app:titleTextColor="?attr/colorOnSurface"
+            app:subtitleTextColor="?attr/colorOnSurfaceVariant"
+            app:menu="@menu/appbar_menu"
+            app:navigationIconTint="?attr/colorOnSurface" />
+
+        <!-- ===================================================== -->
+        <!-- Style 2: Primary Colored App Bar                      -->
+        <!-- Classic look — filled with the primary brand color    -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2 · Primary Colored App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Inbox"
+            app:titleTextColor="?attr/colorOnPrimary"
+            app:menu="@menu/appbar_menu"
+            app:navigationIconTint="?attr/colorOnPrimary" />
+
+        <!-- ===================================================== -->
+        <!-- Style 3: Surface Variant (Tonal) App Bar              -->
+        <!-- Softer look using surfaceVariant — modern M3 feel     -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3 · Surface Variant (Tonal) App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarTonal"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorSurfaceVariant"
+            android:elevation="0dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Explore"
+            app:titleTextColor="?attr/colorOnSurface"
+            app:menu="@menu/appbar_menu"
+            app:navigationIconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- ===================================================== -->
+        <!-- Style 4: Transparent / Flat App Bar                   -->
+        <!-- No elevation, blends into the background              -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4 · Transparent / Flat App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarFlat"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Profile"
+            app:titleCentered="true"
+            app:titleTextColor="?attr/colorOnSurface"
+            app:menu="@menu/appbar_menu"
+            app:navigationIconTint="?attr/colorOnSurface" />
+
+        <!-- ===================================================== -->
+        <!-- Style 5: Center-Aligned App Bar                       -->
+        <!-- Title in the center — common for iOS-style layouts    -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5 · Center-Aligned App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarCentered"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorSurface"
+            android:elevation="2dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Notifications"
+            app:titleCentered="true"
+            app:titleTextColor="?attr/colorOnSurface"
+            app:menu="@menu/appbar_menu"
+            app:navigationIconTint="?attr/colorOnSurface" />
+
+        <!-- ===================================================== -->
+        <!-- Style 6: Medium Top App Bar (with CollapsingToolbar)  -->
+        <!-- Larger title area that collapses on scroll            -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6 · Medium Top App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryContainer">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                app:title="Library"
+                app:expandedTitleTextColor="?attr/colorOnPrimaryContainer"
+                app:collapsedTitleTextColor="?attr/colorOnPrimaryContainer"
+                app:contentScrim="?attr/colorPrimaryContainer"
+                app:expandedTitleMarginStart="16dp"
+                app:expandedTitleMarginBottom="16dp">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/topAppBarMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@android:drawable/ic_menu_revert"
+                    app:menu="@menu/appbar_menu"
+                    app:navigationIconTint="?attr/colorOnPrimaryContainer" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- ===================================================== -->
+        <!-- Style 7: Large Top App Bar                            -->
+        <!-- Prominent header with large title area                -->
+        <!-- ===================================================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="7 · Large Top App Bar"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="13sp" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceVariant">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:title="Settings"
+                app:expandedTitleTextAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                app:expandedTitleTextColor="?attr/colorOnSurface"
+                app:collapsedTitleTextColor="?attr/colorOnSurface"
+                app:contentScrim="?attr/colorSurfaceVariant"
+                app:expandedTitleMarginStart="16dp"
+                app:expandedTitleMarginBottom="24dp"
+                app:expandedTitleGravity="bottom">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/topAppBarLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:navigationIcon="@android:drawable/ic_menu_revert"
+                    app:menu="@menu/appbar_menu"
+                    app:navigationIconTint="?attr/colorOnSurface" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
+</ScrollView>
