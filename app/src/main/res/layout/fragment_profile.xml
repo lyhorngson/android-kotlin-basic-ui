@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Profile Fragment — AppBar style: center-aligned, transparent -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- AppBar: transparent, centered title -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarProfile"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:title="Profile"
+        app:titleCentered="true"
+        app:titleTextColor="?attr/colorOnSurface"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:navigationIconTint="?attr/colorPrimary" />
+
+    <!-- Thin divider below AppBar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/colorOutline"
+        android:alpha="0.3" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="64dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
+
+            <!-- Avatar placeholder -->
+            <View
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="24dp"
+                android:background="?attr/colorPrimaryContainer" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👤 Profile Fragment"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AppBar style: Transparent background, centered title, primary-colored back arrow.\n\nClean profile header look."
+                android:textSize="14sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp" />
+
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="24dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

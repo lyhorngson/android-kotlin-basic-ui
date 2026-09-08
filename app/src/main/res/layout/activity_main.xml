@@ -22,6 +22,13 @@
             android:layout_marginBottom="16dp" />
 
         <Button
+            android:id="@+id/btnBottomNavDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bottom Nav Demo (Telegram-style)"
+            android:layout_marginBottom="16dp" />
+
+        <Button
             android:id="@+id/btnShowBottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

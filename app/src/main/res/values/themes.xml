@@ -37,4 +37,25 @@
 
     </style>
 
+    <!-- ========== Bottom Nav Styles (Telegram-like) ========== -->
+
+    <!-- Hide the Material 3 pill/active indicator -->
+    <style name="BottomNavIndicatorHidden" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">0dp</item>
+        <item name="android:height">0dp</item>
+        <item name="android:color">@android:color/transparent</item>
+    </style>
+
+    <!-- Active tab label: small, bold -->
+    <style name="BottomNavTextActive" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Inactive tab label: small, normal -->
+    <style name="BottomNavTextInactive" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Main container: FrameLayout lets the fragment sit BEHIND the bottom bar -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Fragment container — fills the ENTIRE screen (edge-to-edge) -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ============================================================ -->
+    <!-- Transparent Bottom Navigation Bar                            -->
+    <!-- Sits on top of the fragment content (overlays, not pushes)   -->
+    <!--                                                              -->
+    <!-- Key style points:                                            -->
+    <!--  • android:background="@android:color/transparent"           -->
+    <!--  • app:backgroundTint="@android:color/transparent" to clear  -->
+    <!--    Material default tint                                     -->
+    <!--  • A translucent background view sits behind it for blur     -->
+    <!--  • No elevation shadow → clean Telegram feel                 -->
+    <!--  • app:labelVisibilityMode="labeled" → always show labels    -->
+    <!--  • app:itemActiveIndicatorStyle → no pill indicator           -->
+    <!-- ============================================================ -->
+
+    <!-- Translucent scrim behind the bottom bar (mimics frosted glass) -->
+    <View
+        android:id="@+id/bottomBarScrim"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="?attr/colorSurface"
+        android:alpha="0.92" />
+
+    <!-- Subtle top divider line (instead of elevation shadow) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="56dp"
+        android:background="?attr/colorOutline"
+        android:alpha="0.3" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="0dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_color_selector"
+        app:itemTextColor="@color/bottom_nav_color_selector"
+        app:itemActiveIndicatorStyle="@style/BottomNavIndicatorHidden"
+        app:itemTextAppearanceActive="@style/BottomNavTextActive"
+        app:itemTextAppearanceInactive="@style/BottomNavTextInactive"
+        app:itemIconSize="24dp"
+        app:itemPaddingTop="8dp" />
+
+</FrameLayout>

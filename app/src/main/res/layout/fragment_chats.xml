@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chats Fragment — Telegram-style: hamburger + title + search icon -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- AppBar: flat, no elevation, surface background -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarChats"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        android:elevation="0dp"
+        app:navigationIcon="@android:drawable/ic_menu_sort_by_size"
+        app:title="Chats"
+        app:titleTextColor="?attr/colorOnSurface"
+        app:navigationIconTint="?attr/colorOnSurface" />
+
+    <!-- Thin divider below AppBar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/colorOutline"
+        android:alpha="0.3" />
+
+    <!-- Scrollable content — paddingBottom so it doesn't hide behind bottom bar -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="64dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💬 Chats Fragment"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AppBar style: Flat surface, no elevation, hamburger menu icon.\n\nContent scrolls behind the transparent bottom bar."
+                android:textSize="14sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- Dummy items to demonstrate scrolling behind bottom bar -->
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="16dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

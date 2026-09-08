@@ -24,6 +24,9 @@
         <activity
             android:name=".AppBarDemoActivity"
             android:exported="false" />
+        <activity
+            android:name=".BottomNavDemoActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

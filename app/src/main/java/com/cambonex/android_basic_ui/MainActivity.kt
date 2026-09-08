@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AppBarDemoActivity::class.java))
         }
 
+        // Launch Bottom Nav demo (Telegram-style)
+        findViewById<Button>(R.id.btnBottomNavDemo).setOnClickListener {
+            startActivity(Intent(this, BottomNavDemoActivity::class.java))
+        }
+
         findViewById<Button>(R.id.btnShowBottomSheet).setOnClickListener {
             showCustomBottomSheet()
         }
