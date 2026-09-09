@@ -16,13 +16,12 @@
         android:elevation="0dp"
         app:title="Contact"
         app:titleTextColor="?attr/colorOnPrimary"
-        app:navigationIcon="@android:drawable/ic_menu_search"
-        app:navigationIconTint="?attr/colorOnPrimary" />
+        app:menu="@menu/menu_contact_toolbar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="64dp"
+        android:paddingBottom="110dp"
         android:clipToPadding="false">
 
         <LinearLayout
@@ -35,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="👤 Contact Fragment"
-                android:textSize="22sp"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
                 android:layout_marginBottom="8dp" />
@@ -44,15 +43,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="AppBar style: Primary brand color background with white icons/text.\n\nGives a strong branded feel to this tab."
-                android:textSize="14sp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:lineSpacingExtra="4dp" />
 
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="16dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <!-- Demo items using Material 3 CardView -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="12dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="12dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="12dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,65 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Main container: FrameLayout lets the fragment sit BEHIND the bottom bar -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface">
+    android:background="?android:attr/colorBackground">
 
-    <!-- Fragment container — fills the ENTIRE screen (edge-to-edge) -->
+    <!-- Fragment container occupying full screen (content scrolls UNDER the floating bar) -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- ============================================================ -->
-    <!-- Transparent Bottom Navigation Bar                            -->
-    <!-- Sits on top of the fragment content (overlays, not pushes)   -->
-    <!--                                                              -->
-    <!-- Key style points:                                            -->
-    <!--  • android:background="@android:color/transparent"           -->
-    <!--  • app:backgroundTint="@android:color/transparent" to clear  -->
-    <!--    Material default tint                                     -->
-    <!--  • A translucent background view sits behind it for blur     -->
-    <!--  • No elevation shadow → clean Telegram feel                 -->
-    <!--  • app:labelVisibilityMode="labeled" → always show labels    -->
-    <!--  • app:itemActiveIndicatorStyle → no pill indicator           -->
-    <!-- ============================================================ -->
-
-    <!-- Translucent scrim behind the bottom bar (mimics frosted glass) -->
-    <View
-        android:id="@+id/bottomBarScrim"
+    <!-- Telegram-style Floating Capsule Pill Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/floatingBarCard"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?attr/colorSurface"
-        android:alpha="0.92" />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="?attr/colorOutlineVariant"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+        android:alpha="0.96">
 
-    <!-- Subtle top divider line (instead of elevation shadow) -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="56dp"
-        android:background="?attr/colorOutline"
-        android:alpha="0.3" />
+        <!-- Navigation items container with full item backgrounds -->
+        <LinearLayout
+            android:id="@+id/customBottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="6dp">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        app:backgroundTint="@android:color/transparent"
-        app:elevation="0dp"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:itemIconTint="@color/bottom_nav_color_selector"
-        app:itemTextColor="@color/bottom_nav_color_selector"
-        app:itemActiveIndicatorStyle="@style/BottomNavIndicatorHidden"
-        app:itemTextAppearanceActive="@style/BottomNavTextActive"
-        app:itemTextAppearanceInactive="@style/BottomNavTextInactive"
-        app:itemIconSize="24dp"
-        app:itemPaddingTop="8dp" />
+            <!-- 1. Chats Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabChats"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
+
+                <ImageView
+                    android:id="@+id/iconChats"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_chat_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Chats" />
+
+                <TextView
+                    android:id="@+id/labelChats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chats"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
+
+            <!-- 2. Contact Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabContact"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
+
+                <ImageView
+                    android:id="@+id/iconContact"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_contact_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Contact" />
+
+                <TextView
+                    android:id="@+id/labelContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
+
+            <!-- 3. Settings Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabSettings"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
+
+                <ImageView
+                    android:id="@+id/iconSettings"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_setting_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Settings" />
+
+                <TextView
+                    android:id="@+id/labelSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
+
+            <!-- 4. Profile Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabProfile"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
+
+                <ImageView
+                    android:id="@+id/iconProfile"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_profile_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Profile" />
+
+                <TextView
+                    android:id="@+id/labelProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>

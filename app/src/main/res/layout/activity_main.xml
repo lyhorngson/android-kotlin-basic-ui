@@ -1,114 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
-    <LinearLayout
+    <!-- Fragment container occupying full screen (content scrolls UNDER the floating bar) -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Telegram-style Floating Capsule Pill Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/floatingBarCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_gravity="bottom"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="?attr/colorOutlineVariant"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+        android:alpha="0.96">
 
-        <Button
-            android:id="@+id/btnAppBarDemo"
+        <!-- Navigation items container with full item backgrounds -->
+        <LinearLayout
+            android:id="@+id/customBottomNav"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="AppBar Styles Demo"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="6dp">
 
-        <Button
-            android:id="@+id/btnBottomNavDemo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bottom Nav Demo (Telegram-style)"
-            android:layout_marginBottom="16dp" />
+            <!-- 1. Chats Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabChats"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
 
-        <Button
-            android:id="@+id/btnShowBottomSheet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Bottom Sheet Dialog"
-            android:ellipsize="end"
-            android:layout_marginBottom="16dp" />
+                <ImageView
+                    android:id="@+id/iconChats"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_chat_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Chats" />
 
-        <Button
-            android:id="@+id/btnShowPersistentBottomSheet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Persistent Bottom Sheet"
-            android:layout_marginBottom="16dp" />
+                <TextView
+                    android:id="@+id/labelChats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chats"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btnExpand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Expand Bottom Sheet"
-            android:layout_marginBottom="8dp" />
+            <!-- 2. Contact Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabContact"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
 
-        <Button
-            android:id="@+id/btnCollapse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Collapse Bottom Sheet"
-            android:layout_marginBottom="8dp" />
+                <ImageView
+                    android:id="@+id/iconContact"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_contact_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Contact" />
 
-        <Button
-            android:id="@+id/btnHide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hide Bottom Sheet" />
+                <TextView
+                    android:id="@+id/labelContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <!-- 3. Settings Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabSettings"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
 
-    <!-- Persistent Bottom Sheet View -->
-    <LinearLayout
-        android:id="@+id/bottomSheetView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="?attr/colorSurface"
-        android:elevation="8dp"
-        android:padding="16dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="100dp"
-        app:behavior_hideable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+                <ImageView
+                    android:id="@+id/iconSettings"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_setting_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Settings" />
 
-        <View
-            android:layout_width="40dp"
-            android:layout_height="4dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bottom_sheet_handle" />
+                <TextView
+                    android:id="@+id/labelSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Persistent Bottom Sheet"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center" />
+            <!-- 4. Profile Tab Item -->
+            <LinearLayout
+                android:id="@+id/tabProfile"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/nav_item_container_bg">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="This bottom sheet stays in the activity"
-            android:gravity="center"
-            android:layout_marginTop="8dp" />
+                <ImageView
+                    android:id="@+id/iconProfile"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/nav_profile_selector"
+                    app:tint="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true"
+                    android:contentDescription="Profile" />
 
-        <Button
-            android:id="@+id/btnAction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Action"
-            android:layout_marginTop="8dp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/labelProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="11sp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/bottom_nav_color_selector"
+                    android:duplicateParentState="true" />
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

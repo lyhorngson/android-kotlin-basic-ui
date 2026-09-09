@@ -29,22 +29,21 @@
                 android:id="@+id/toolbarSettings"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                app:menu="@menu/menu_settings_toolbar" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Thin divider -->
-    <View
+    <!-- Material 3 Divider -->
+    <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="?attr/colorOutline"
-        android:alpha="0.3" />
+        android:layout_height="wrap_content" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="64dp"
+        android:paddingBottom="110dp"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -58,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="⚙️ Settings Fragment"
-                android:textSize="22sp"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
                 android:layout_marginBottom="8dp" />
@@ -67,16 +66,117 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="AppBar style: Large collapsing title (iOS Settings-like).\n\nTitle starts big at the bottom and collapses into a standard toolbar on scroll."
-                android:textSize="14sp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:lineSpacingExtra="4dp" />
 
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="16dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <!-- Demo Card 1: AppBar Styles Demo -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAppBarDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎨 AppBar Styles Demo"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore Flat, Primary, Large Collapsing, and Transparent AppBars"
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Demo Card 2: Modal Bottom Sheet -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📑 Modal Bottom Sheet"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open interactive Material 3 modal bottom sheet dialog"
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Demo Card 3: Persistent Bottom Sheet Lab -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardComponentsLab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🧪 Components Lab"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open persistent bottom sheet controls and extra lab demos"
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,58 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- ========== Light Theme (Default) ========== -->
-    <style name="Theme.MyApp"
-        parent="Theme.Material3.Light.NoActionBar">
+    <!-- ======================================================= -->
+    <!-- Base Application Theme: Google Material 3 (Light)       -->
+    <!-- ======================================================= -->
+    <style name="Theme.MyApp" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- Primary brand color -->
-        <item name="colorPrimary">@color/sky_blue_primary</item>
-        <item name="colorOnPrimary">@color/sky_on_primary_light</item>
-        <item name="colorPrimaryContainer">@color/sky_blue_primary_light</item>
-        <item name="colorOnPrimaryContainer">@color/sky_blue_primary_dark</item>
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
 
         <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/sky_blue_secondary</item>
-        <item name="colorOnSecondary">@color/sky_on_secondary_light</item>
-        <item name="colorSecondaryContainer">@color/sky_blue_accent</item>
-        <item name="colorOnSecondaryContainer">@color/sky_blue_primary_dark</item>
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_light_onSecondaryContainer</item>
+
+        <!-- Tertiary accent color -->
+        <item name="colorTertiary">@color/md_theme_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_light_onTertiaryContainer</item>
+
+        <!-- Error color -->
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorOnError">@color/md_theme_light_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
 
         <!-- Background & Surface -->
-        <item name="android:colorBackground">@color/sky_background_light</item>
-        <item name="colorSurface">@color/sky_surface_light</item>
-        <item name="colorSurfaceVariant">@color/sky_surface_variant_light</item>
-        <item name="colorOnSurface">@color/sky_text_primary_light</item>
-        <item name="colorOnSurfaceVariant">@color/sky_text_secondary_light</item>
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+
+        <item name="colorSurfaceContainerLowest">@color/md_theme_light_surfaceContainerLowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_light_surfaceContainerLow</item>
+        <item name="colorSurfaceContainer">@color/md_theme_light_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_light_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_light_surfaceContainerHighest</item>
 
         <!-- Outline -->
-        <item name="colorOutline">@color/sky_outline_light</item>
+        <item name="colorOutline">@color/md_theme_light_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_light_outlineVariant</item>
 
-        <!-- Error -->
-        <item name="colorError">@color/sky_error_light</item>
-        <item name="colorOnError">@color/sky_on_error_light</item>
+        <!-- Inverse -->
+        <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
 
-        <!-- Status bar -->
-        <item name="android:statusBarColor">@color/sky_blue_primary_dark</item>
-        <item name="android:navigationBarColor">@color/sky_surface_light</item>
+        <!-- Status & Navigation bar (Light Mode) -->
+        <item name="android:statusBarColor">@color/md_theme_light_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/md_theme_light_surface</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
     </style>
 
-    <!-- ========== Bottom Nav Styles (Telegram-like) ========== -->
+    <!-- ========== Bottom Navigation Bar Custom Styles ========== -->
 
-    <!-- Hide the Material 3 pill/active indicator -->
+    <!-- Hide the Material 3 pill/active indicator for clean Telegram style -->
     <style name="BottomNavIndicatorHidden" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:width">0dp</item>
         <item name="android:height">0dp</item>
         <item name="android:color">@android:color/transparent</item>
     </style>
 
-    <!-- Active tab label: small, bold -->
+    <!-- Telegram-style active indicator pill -->
+    <style name="BottomNavIndicatorPill" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">48dp</item>
+        <item name="android:height">28dp</item>
+        <item name="android:color">?attr/colorSecondaryContainer</item>
+    </style>
+
+    <!-- Active tab label -->
     <style name="BottomNavTextActive" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- Inactive tab label: small, normal -->
+    <!-- Inactive tab label -->
     <style name="BottomNavTextInactive" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">11sp</item>
         <item name="android:textStyle">normal</item>

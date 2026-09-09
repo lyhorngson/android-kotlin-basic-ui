@@ -17,20 +17,17 @@
         app:title="Profile"
         app:titleCentered="true"
         app:titleTextColor="?attr/colorOnSurface"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        app:navigationIconTint="?attr/colorPrimary" />
+        app:menu="@menu/menu_profile_toolbar" />
 
-    <!-- Thin divider below AppBar -->
-    <View
+    <!-- Material 3 Divider -->
+    <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="?attr/colorOutline"
-        android:alpha="0.3" />
+        android:layout_height="wrap_content" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="64dp"
+        android:paddingBottom="110dp"
         android:clipToPadding="false">
 
         <LinearLayout
@@ -40,18 +37,20 @@
             android:padding="16dp"
             android:gravity="center_horizontal">
 
-            <!-- Avatar placeholder -->
-            <View
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+            <!-- Avatar placeholder (Circular Material Card) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="88dp"
+                android:layout_height="88dp"
                 android:layout_marginTop="24dp"
-                android:background="?attr/colorPrimaryContainer" />
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                app:cardCornerRadius="44dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="👤 Profile Fragment"
-                android:textSize="22sp"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
                 android:gravity="center"
@@ -62,14 +61,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="AppBar style: Transparent background, centered title, primary-colored back arrow.\n\nClean profile header look."
-                android:textSize="14sp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:gravity="center"
                 android:lineSpacingExtra="4dp" />
 
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="24dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
-            <View android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="?attr/colorSurfaceVariant" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="12dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.Material3.CardView.Filled"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+                app:cardCornerRadius="12dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

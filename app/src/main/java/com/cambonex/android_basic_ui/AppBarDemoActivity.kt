@@ -49,8 +49,8 @@ class AppBarDemoActivity : AppCompatActivity() {
                         Toast.makeText(this, "Search clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
-                    R.id.action_favorite -> {
-                        Toast.makeText(this, "Favorite clicked", Toast.LENGTH_SHORT).show()
+                    R.id.action_more -> {
+                        Toast.makeText(this, "More options clicked", Toast.LENGTH_SHORT).show()
                         true
                     }
                     R.id.action_settings -> {

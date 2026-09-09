@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_contact_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_contact_add"
+        android:icon="@drawable/ic_add"
+        android:title="Add contact"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_contact_grid"
+        android:icon="@drawable/ic_grid"
+        android:title="Grid view"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_contact_more"
+        android:icon="@drawable/ic_more"
+        android:title="More options"
+        app:showAsAction="never" />
+
+</menu>

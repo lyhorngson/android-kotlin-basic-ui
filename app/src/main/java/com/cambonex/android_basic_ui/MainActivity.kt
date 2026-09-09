@@ -1,51 +1,116 @@
 package com.cambonex.android_basic_ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.DynamicColors
 
+/**
+ * Main Activity hosting the Telegram-style floating capsule pill bottom navigation bar:
+ * - Each navbar item has a full container background (rounded pill when active)
+ * - Zero overlap between icon and label, with tight 3dp spacing
+ * - True edge-to-edge layout with WindowCompat.setDecorFitsSystemWindows(window, false)
+ * - Dynamic system insets handling for top status bar and bottom gesture bar
+ * - Seamless fragment switching (Chats, Contact, Settings, Profile)
+ */
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
-    private lateinit var bottomSheetView: View
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply Material You dynamic colors if supported
+        DynamicColors.applyToActivitiesIfAvailable(application)
         super.onCreate(savedInstanceState)
+
+        // Enable edge-to-edge display so fragment content scrolls transparently behind navigation
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContentView(R.layout.activity_main)
 
-        // Launch AppBar styles demo
-        findViewById<Button>(R.id.btnAppBarDemo).setOnClickListener {
-            startActivity(Intent(this, AppBarDemoActivity::class.java))
+        val fragmentContainer = findViewById<View>(R.id.fragmentContainer)
+        val floatingBarCard = findViewById<MaterialCardView>(R.id.floatingBarCard)
+
+        // Apply top status bar inset to fragment container so appbars start cleanly below status bar
+        ViewCompat.setOnApplyWindowInsetsListener(fragmentContainer) { view, insets ->
+            val statusBarInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            view.updatePadding(top = statusBarInset)
+            insets
         }
 
-        // Launch Bottom Nav demo (Telegram-style)
-        findViewById<Button>(R.id.btnBottomNavDemo).setOnClickListener {
-            startActivity(Intent(this, BottomNavDemoActivity::class.java))
+        // Dynamically add navigation bar inset to floating pill bottom margin
+        val baseMarginBottom = (20 * resources.displayMetrics.density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(floatingBarCard) { view, insets ->
+            val navBarInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = baseMarginBottom + navBarInset
+            }
+            insets
         }
 
-        findViewById<Button>(R.id.btnShowBottomSheet).setOnClickListener {
-            showCustomBottomSheet()
+        // Setup full container navbar items
+        val tabChats = findViewById<View>(R.id.tabChats)
+        val tabContact = findViewById<View>(R.id.tabContact)
+        val tabSettings = findViewById<View>(R.id.tabSettings)
+        val tabProfile = findViewById<View>(R.id.tabProfile)
+
+        val labelChats = findViewById<TextView>(R.id.labelChats)
+        val labelContact = findViewById<TextView>(R.id.labelContact)
+        val labelSettings = findViewById<TextView>(R.id.labelSettings)
+        val labelProfile = findViewById<TextView>(R.id.labelProfile)
+
+        val tabsWithLabels = listOf(
+            tabChats to labelChats,
+            tabContact to labelContact,
+            tabSettings to labelSettings,
+            tabProfile to labelProfile
+        )
+
+        fun selectTab(selectedTab: View, fragment: Fragment) {
+            tabsWithLabels.forEach { (tab, label) ->
+                val isSelected = (tab == selectedTab)
+                tab.isSelected = isSelected
+                label.setTypeface(null, if (isSelected) android.graphics.Typeface.BOLD else android.graphics.Typeface.NORMAL)
+            }
+            loadFragment(fragment)
         }
 
-        findViewById<Button>(R.id.btnShowPersistentBottomSheet).setOnClickListener {
-            setupPersistentBottomSheet()
+        tabChats.setOnClickListener { selectTab(tabChats, ChatsFragment()) }
+        tabContact.setOnClickListener { selectTab(tabContact, ContactFragment()) }
+        tabSettings.setOnClickListener { selectTab(tabSettings, SettingsFragment()) }
+        tabProfile.setOnClickListener { selectTab(tabProfile, ProfileFragment()) }
+
+        // Select default tab on fresh start
+        if (savedInstanceState == null) {
+            selectTab(tabChats, ChatsFragment())
         }
     }
 
-    private fun showCustomBottomSheet() {
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+    }
+
+    /**
+     * Show interactive Material 3 custom modal bottom sheet
+     */
+    fun showCustomBottomSheet() {
         val bottomSheetDialog = BottomSheetDialog(this)
         val view = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_layout, null)
         bottomSheetDialog.setContentView(view)
 
-        // Find views
         val tvTitle = view.findViewById<TextView>(R.id.tvTitle)
         val tvContent = view.findViewById<TextView>(R.id.tvContent)
         val etInput = view.findViewById<EditText>(R.id.etInput)
@@ -70,71 +135,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        bottomSheetDialog.show()
-    }
-
-    private fun setupPersistentBottomSheet() {
-        bottomSheetView = findViewById(R.id.bottomSheetView)
-
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-        bottomSheetBehavior.peekHeight = 150
-
-        bottomSheetBehavior.isHideable = true
-
-        bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (newState) {
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                        Toast.makeText(this@MainActivity, "Bottom Sheet Expanded", Toast.LENGTH_SHORT).show()
-                    }
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                        Toast.makeText(this@MainActivity, "Bottom Sheet Collapsed", Toast.LENGTH_SHORT).show()
-                    }
-                    BottomSheetBehavior.STATE_HIDDEN -> {
-                        Toast.makeText(this@MainActivity, "Bottom Sheet Hidden", Toast.LENGTH_SHORT).show()
-                    }
-                    BottomSheetBehavior.STATE_DRAGGING -> {
-                        // User is dragging
-                    }
-                    BottomSheetBehavior.STATE_SETTLING -> {
-                        // Settling into position
-                    }
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                // Called when the bottom sheet is being slid
-                // slideOffset: 0 = collapsed, 1 = expanded
-            }
-        })
-
-        // Setup controls for the bottom sheet
-        findViewById<Button>(R.id.btnCollapse).setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-
-        findViewById<Button>(R.id.btnExpand).setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-        }
-
-        findViewById<Button>(R.id.btnHide).setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        }
-    }
-
-    private fun showSimpleBottomSheet(message: String) {
-        val bottomSheetDialog = BottomSheetDialog(this)
-        val view = LayoutInflater.from(this).inflate(R.layout.simple_bottom_sheet, null)
-
-        view.findViewById<TextView>(R.id.tvMessage).text = message
-        view.findViewById<Button>(R.id.btnClose).setOnClickListener {
-            bottomSheetDialog.dismiss()
-        }
-
-        bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
 }
